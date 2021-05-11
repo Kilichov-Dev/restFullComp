@@ -35,7 +35,7 @@ public class CompanyService {
         }
         address.setHomeNumber(companyDto.getHomeNumber());
         address.setStreet(companyDto.getStreet());
-        Address save = addressRepository.save(address);
+
 
         Company company = new Company();
         if (companyRepository.existsByCorpName(companyDto.getCorpName())) {
@@ -43,6 +43,8 @@ public class CompanyService {
         }
         company.setCorpName(companyDto.getCorpName());
 
+
+        Address save = addressRepository.save(address);
         company.setAddress(save);
         companyRepository.save(company);
         return new ApiResponse("Company added success!", true);
